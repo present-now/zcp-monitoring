@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: monitoring-ingress2
+  name: monitoring-ingress
 spec:
   rules:
   - host: dev-monitoring.cloudzcp.io
