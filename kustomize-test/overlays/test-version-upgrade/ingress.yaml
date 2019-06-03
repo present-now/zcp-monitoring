@@ -4,21 +4,21 @@ metadata:
   name: monitoring-ingress
 spec:
   rules:
-  - host: stg-monitoring.cloudzcp.io
+  - host: vup-monitoring.cloudzcp.io
     http:
       paths:
       - path: /
         backend:
           serviceName: grafana-service
           servicePort: 3000
-  - host: stg-prometheus.cloudzcp.io
+  - host: vup-prometheus.cloudzcp.io
     http:
       paths:
       - path: /
         backend:
           serviceName: prometheus-service
           servicePort: 9090
-  - host: stg-alertmanager.cloudzcp.io
+  - host: vup-alertmanager.cloudzcp.io
     http:
       paths:
       - path: /
@@ -28,6 +28,6 @@ spec:
   tls:
   - secretName: cloudzcp-io-cert
     hosts:
-    - stg-monitoring.cloudzcp.io
-    - stg-prometheus.cloudzcp.io
-    - stg-alertmanager.cloudzcp.io
+    - vup-monitoring.cloudzcp.io
+    - vup-prometheus.cloudzcp.io
+    - vup-alertmanager.cloudzcp.io
