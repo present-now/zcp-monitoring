@@ -26,7 +26,7 @@ spec:
           serviceName: alertmanager-service
           servicePort: 9093
   tls:
-  - shosts:
+  - hosts:
     - dev-monitoring.cloudzcp.io
     - dev-prometheus.cloudzcp.io
     - dev-alertmanager.cloudzcp.io
