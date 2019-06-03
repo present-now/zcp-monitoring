@@ -1,24 +1,24 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: monitoring-ingress
+  name: monitoring-ingress2
 spec:
   rules:
-  - host: pog-dev-monitoring.cloudzcp.io
+  - host: dev-monitoring.cloudzcp.io
     http:
       paths:
       - path: /
         backend:
           serviceName: grafana-service
           servicePort: 3000
-  - host: pog-dev-prometheus.cloudzcp.io
+  - host: dev-prometheus.cloudzcp.io
     http:
       paths:
       - path: /
         backend:
           serviceName: prometheus-service
           servicePort: 9090
-  - host: pog-dev-alertmanager.cloudzcp.io
+  - host: dev-alertmanager.cloudzcp.io
     http:
       paths:
       - path: /
@@ -27,6 +27,6 @@ spec:
           servicePort: 9093
   tls:
   - shosts:
-    - pog-dev-monitoring.cloudzcp.io
-    - pog-dev-prometheus.cloudzcp.io
-    - pog-dev-alertmanager.cloudzcp.io
+    - dev-monitoring.cloudzcp.io
+    - dev-prometheus.cloudzcp.io
+    - dev-alertmanager.cloudzcp.io
