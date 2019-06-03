@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: monitoring-ingress
+spec:
+  rules:
+  - host: vup-monitoring.cloudzcp.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: grafana-service
+          servicePort: 3000
+  - host: vup-prometheus.cloudzcp.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: prometheus-service
+          servicePort: 9090
+  - host: vup-alertmanager.cloudzcp.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: alertmanager-service
+          servicePort: 9093
+  tls:
+  - shosts:
+    - vup-monitoring.cloudzcp.io
+    - vup-prometheus.cloudzcp.io
+    - vup-alertmanager.cloudzcp.io
