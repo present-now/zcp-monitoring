@@ -26,7 +26,8 @@ spec:
           serviceName: alertmanager-service
           servicePort: 9093
   tls:
-  - hosts:
+  - secretName: cloudzcp-io-cert
+    hosts:
     - stg-monitoring.cloudzcp.io
     - stg-prometheus.cloudzcp.io
     - stg-alertmanager.cloudzcp.io
