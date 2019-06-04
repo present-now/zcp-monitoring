@@ -2,3 +2,5 @@ bases:
 - ../../base
 patchesStrategicMerge:
 - ingress.yaml
+- prometheus/prometheus-cm.yaml
+- grafana/grafana-cm.yaml
