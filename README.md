@@ -39,6 +39,8 @@ $ git clone https://github.com/cnpst/zcp-monitoring.git
 
 Monitoring 용도 ETCD TLS Secret 생성
 ```
+# ZCP Local, run the following command
+$ kubectl patch secret etcd-secrets -n kube-system -p='{"metadata": {"name": "etcd-secrets", "namespace": "zcp-system"}}' --dry-run -o yaml | kubectl create -f -
 # kubectl clent version 1.11 or higher, run the following command
 $ kubectl patch secret calico-etcd-secrets -n kube-system -p='{"metadata": {"name": "etcd-secrets", "namespace": "zcp-system"}}' --dry-run -o yaml | kubectl create -f -
 # kubectl clent version 1.10 or lower, run the following command
@@ -51,6 +53,9 @@ etcd-secrets   Opaque   3
 ## Prometheus
 
 ### prometheus configmap 설정 및 생성
+
+(Optioan) ZCP Local
+현재 ZCP 포함된 Prometheus와 포트 충돌(9100) 모든 포트를 변경(ex. 9101)
 
 외부에서 식별 가능한 Cluster Name 변경하고 configmap 생성
 
