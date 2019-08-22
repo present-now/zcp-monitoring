@@ -12,7 +12,7 @@ data:
       scrape_timeout: 15s
       evaluation_interval: 15s
       external_labels:
-        env: 'CLOUDZCP-EXAMPLE-DEV'
+        env: 'CLOUDZCP-LOCAL'
 
     alerting:
       alertmanagers:
@@ -70,7 +70,7 @@ data:
       - source_labels: [__meta_kubernetes_node_name]
         regex: (.+)
         target_label: __address__
-        replacement: ${1}:9100
+        replacement: ${1}:9101
 
     - job_name: 'kubernetes-nodes-cadvisor'
       kubernetes_sd_configs:

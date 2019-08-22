@@ -4,7 +4,7 @@ metadata:
   name: grafana-data
   namespace: zcp-system
   annotations:
-    volume.beta.kubernetes.io/storage-class: "ibmc-block-retain-silver"
+    volume.beta.kubernetes.io/storage-class: "managed-nfs-storage"
   labels:
 #    billingType: "monthly"
 spec:

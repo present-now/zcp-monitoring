@@ -13,7 +13,7 @@ spec:
   clusterIP: None
   ports:
     - name: prometheus-node-exporter
-      port: 9100
+      port: 9101
       protocol: TCP
   selector:
     app: prometheus

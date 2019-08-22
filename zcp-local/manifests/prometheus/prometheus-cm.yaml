@@ -12,7 +12,7 @@ data:
       scrape_timeout: 15s
       evaluation_interval: 15s
       external_labels:
-        env: 'SK-CPS-ICCS-K8S-DEV'
+        env: 'ZCP-LOCAL'
 
     alerting:
       alertmanagers:
@@ -80,7 +80,7 @@ data:
         - source_labels: [__meta_kubernetes_node_name]
           regex: (.+)
           target_label: __metrics_path__
-          replacement: /api/v1/nodes/${1}:9100/proxy/metrics
+          replacement: /api/v1/nodes/${1}:9101/proxy/metrics
 
       
       - job_name: 'kubernetes-cadvisor'

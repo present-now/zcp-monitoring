@@ -19,17 +19,17 @@ spec:
         value: "true"
         effect: "NoSchedule"
       restartPolicy: Always
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: beta.kubernetes.io/arch
-                operator: In
-                values:
-                - "amd64"
-              - key: node-role.kubernetes.io/management
-                operator: Exists
+      # affinity:
+      #   nodeAffinity:
+      #     requiredDuringSchedulingIgnoredDuringExecution:
+      #       nodeSelectorTerms:
+      #       - matchExpressions:
+      #         - key: beta.kubernetes.io/arch
+      #           operator: In
+      #           values:
+      #           - "amd64"
+      #         - key: node-role.kubernetes.io/management
+      #           operator: Exists
       containers:
         - image: registry.au-syd.bluemix.net/cloudzcp/blackbox-exporter:v0.12.0
           args:

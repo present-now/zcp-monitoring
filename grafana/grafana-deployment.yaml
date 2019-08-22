@@ -10,23 +10,23 @@ spec:
       labels:
         component: grafana
     spec:
-      tolerations:
-      - key: "management"
-        operator: "Equal"
-        value: "true"
-        effect: "NoSchedule"
+      # tolerations:
+      # - key: "management"
+      #   operator: "Equal"
+      #   value: "true"
+      #   effect: "NoSchedule"
       restartPolicy: Always
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: beta.kubernetes.io/arch
-                operator: In
-                values:
-                - "amd64"
-              - key: node-role.kubernetes.io/management
-                operator: Exists
+      # affinity:
+      #   nodeAffinity:
+      #     requiredDuringSchedulingIgnoredDuringExecution:
+      #       nodeSelectorTerms:
+      #       - matchExpressions:
+      #         - key: beta.kubernetes.io/arch
+      #           operator: In
+      #           values:
+      #           - "amd64"
+      #         - key: node-role.kubernetes.io/management
+      #           operator: Exists
       containers:
       - image: registry.au-syd.bluemix.net/cloudzcp/grafana:5.0.4
         name: grafana

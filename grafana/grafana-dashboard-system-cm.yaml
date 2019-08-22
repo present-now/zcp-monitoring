@@ -2013,7 +2013,7 @@ data:
               "renderer": "flot",
               "seriesOverrides": [
                 {
-                  "alias": "node_memory_SwapFree{instance=\"172.17.0.1:9100\",job=\"prometheus\"}",
+                  "alias": "node_memory_SwapFree{instance=\"172.17.0.1:9101\",job=\"prometheus\"}",
                   "yaxis": 2
                 }
               ],
@@ -2215,7 +2215,7 @@ data:
                   "yaxis": 1
                 },
                 {
-                  "alias": "{instance=\"172.17.0.1:9100\"}",
+                  "alias": "{instance=\"172.17.0.1:9101\"}",
                   "yaxis": 2
                 },
                 {

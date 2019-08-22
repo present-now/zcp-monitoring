@@ -76,5 +76,5 @@ data:
 
     - name: 'alert-aggregator'
       webhook_configs:
-      - url: https://alert.cloudzcp.io/webhook/alertmanager
+      - url: https://alert.test.skcloud.io/webhook/alertmanager
         send_resolved: true

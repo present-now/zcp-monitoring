@@ -40,9 +40,9 @@ $ git clone https://github.com/cnpst/zcp-monitoring.git
 Monitoring 용도 ETCD TLS Secret 생성
 ```
 # kubectl clent version 1.11 or higher, run the following command
-$ kubectl patch secret calico-etcd-secrets -n kube-system -p='{"metadata": {"name": "etcd-secrets", "namespace": "zcp-system"}}' --dry-run -o yaml | kubectl create -f -
+$ kubectl patch secret etcd-secret -n kube-system -p='{"metadata": {"name": "etcd-secrets", "namespace": "zcp-system"}}' --dry-run -o yaml | kubectl create -f -
 # kubectl clent version 1.10 or lower, run the following command
-$ kubectl get secret calico-etcd-secrets -n kube-system -o yaml | sed 's/\(name\):.*$/\1: etcd-secrets/' | sed 's/\(namespace\):.*$/\1: zcp-system/' | kubectl create -f -
+$ kubectl get secret etcd-secret -n kube-system -o yaml | sed 's/\(name\):.*$/\1: etcd-secrets/' | sed 's/\(namespace\):.*$/\1: zcp-system/' | kubectl create -f -
 $ kubectl get secret -n zcp-system
 NAME           TYPE     DATA
 etcd-secrets   Opaque   3   
@@ -56,7 +56,7 @@ etcd-secrets   Opaque   3
 
 ```
 $ cluster_name=$(kubectl config current-context | tr '[:lower:]' '[:upper:]') &&
-  cat prometheus-config/prometheus-cm.yaml | sed 's/CLOUDZCP-EXAMPLE-DEV/'$cluster_name'/' | kubectl create -f -
+  cat prometheus-config/prometheus-cm.yaml | sed 's/CLOUDZCP-DEV/'$cluster_name'/' | kubectl create -f -
 ```
 
 정상적으로 생성되었는지 확인
@@ -73,7 +73,7 @@ data:
       scrape_timeout: 15s
       evaluation_interval: 15s
       external_labels:
-        env: 'CLOUDZCP-EXAMPLE-DEV'
+        env: 'CLOUDZCP-DEV'
 ...
 ```
 
@@ -89,7 +89,7 @@ metadata:
   name: prometheus-data
   namespace: zcp-system
   annotations:
-    volume.beta.kubernetes.io/storage-class: "ibmc-block-retain-silver"
+    volume.beta.kubernetes.io/storage-class: "managed-nfs-storage"
   labels:
     billingType: "hourly"
 spec:
@@ -166,7 +166,7 @@ $ kubectl get cm -n zcp-system monitoring-grafana-config -o yaml
     [server]
     protocol = http
     http_port = 3000
-    domain = example-monitoring.cloudzcp.io
+    domain = monitoring.test.skcloud.io
 ...
     [auth.generic_oauth]
     name = OAuth
@@ -175,8 +175,8 @@ $ kubectl get cm -n zcp-system monitoring-grafana-config -o yaml
     client_id = monitoring
     client_secret = 4138cbf9-4091-4029-a1d6-d64450994f55
     scopes = openid email name
-    auth_url = https://example-iam.cloudzcp.io/auth/realms/zcp/protocol/openid-connect/auth
-    token_url = https://example-iam.cloudzcp.io/auth/realms/zcp/protocol/openid-connect/token
+    auth_url = https://iam.test.skcloud.io/auth/realms/zcp/protocol/openid-connect/auth
+    token_url = https://iam.test.skcloud.io/auth/realms/zcp/protocol/openid-connect/token
 ...
 
 ```
